@@ -36,3 +36,15 @@ def test_repo_with_single_chare_be_found(github_api):
 def test_get_repos(github_api):
     r = github_api.get_repos()
     assert isinstance(r, list)
+
+
+@pytest.mark.api
+def test_emoji(github_api):
+    r = github_api.get_emoji()
+    assert 'ambulance' in r
+    assert isinstance(r, dict)
+
+@pytest.mark.api
+def test_get_commit(github_api):
+    r = github_api.get_commit('octocat','Hello-World')
+    assert isinstance(r, list)
